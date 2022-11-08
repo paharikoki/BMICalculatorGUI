@@ -5,6 +5,9 @@
  */
 package bmicalculatorgui;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 
 /**
  *
@@ -18,6 +21,10 @@ public class inputName extends javax.swing.JFrame {
     public inputName() {
         initComponents();
     }
+    public String peopleName;
+    public JTextField setTextField1(){
+        return jTextField1;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,8 +37,9 @@ public class inputName extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -41,8 +49,6 @@ public class inputName extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Please input your name");
-
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setLabel("Next");
@@ -57,6 +63,10 @@ public class inputName extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        jLabel4.setText("jLabel4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,7 +77,8 @@ public class inputName extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
                 .addContainerGap(220, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -80,7 +91,9 @@ public class inputName extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
 
@@ -94,8 +107,20 @@ public class inputName extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        this.dispose();
-        new BMICalculator().setVisible(true);
+        if(jTextField1.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Please input your name");
+        }else{
+            BMICalculator bmi = new BMICalculator();
+            bmi.setVisible(true);
+            peopleName = jTextField1.getText();        
+            bmi.getFid().setText(peopleName);
+            bmi.getFid().setVisible(false);
+            jLabel4.setText(jTextField1.getText());
+            jTextField1.setText("");
+            this.dispose();
+        }
+        
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
@@ -129,7 +154,6 @@ public class inputName extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
                 new inputName().setVisible(true);
                 
                 
@@ -141,6 +165,7 @@ public class inputName extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
