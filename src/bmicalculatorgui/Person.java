@@ -12,8 +12,4 @@ package bmicalculatorgui;
 public class Person {
     double weight,height,result;
     String name;
-    
-    void calculateBMI(){
-        result = weight / height * height;
-    }
 }

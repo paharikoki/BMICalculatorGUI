@@ -5,6 +5,8 @@
  */
 package bmicalculatorgui;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author alanlestari28
@@ -14,9 +16,22 @@ public class Result extends javax.swing.JFrame {
     /**
      * Creates new form Result
      */
+    
+    
     public Result() {
         initComponents();
     }
+    
+    public JLabel getLabelName() {
+        return jLabel3;
+        }
+    public JLabel getLabelResult() {
+        return jLabel4;
+        }
+    public JLabel getLabelCategory() {
+        return jLabel5;
+        }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,13 +57,13 @@ public class Result extends javax.swing.JFrame {
         jLabel1.setText("Result");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("jLabel1");
+        jLabel3.setText("Your Name :");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setText("jLabel1");
+        jLabel4.setText("Your Body Mass Index :");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setText("jLabel1");
+        jLabel5.setText("Your Category in ...... Body");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,6 +102,7 @@ public class Result extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -117,9 +133,12 @@ public class Result extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        String showresultbmi;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new Result().setVisible(true);
+                
             }
         });
     }

@@ -113,8 +113,8 @@ public class inputName extends javax.swing.JFrame {
             BMICalculator bmi = new BMICalculator();
             bmi.setVisible(true);
             peopleName = jTextField1.getText();        
-            bmi.getFid().setText(peopleName);
-            bmi.getFid().setVisible(false);
+            bmi.getLabelName().setText(peopleName);
+            bmi.getLabelName().setVisible(false);
             jLabel4.setText(jTextField1.getText());
             jTextField1.setText("");
             this.dispose();

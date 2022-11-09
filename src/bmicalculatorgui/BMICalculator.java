@@ -5,6 +5,7 @@
  */
 package bmicalculatorgui;
 
+import java.text.DecimalFormat;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,18 +17,25 @@ import javax.swing.JRadioButton;
  * @author Alanlestari
  */
 public class BMICalculator extends javax.swing.JFrame {
-
+    Person person = new Person();
     /**
      * Creates new form BMICalculator
      */
     public BMICalculator() {
         initComponents();
     }
-    public JLabel getFid() {
-        return fid;
+    public JLabel getLabelName() {
+        return jlabName;
         }
-
-
+    
+    private static final DecimalFormat df = new DecimalFormat("0.00");
+    
+    public double calculate(double weight,double height){
+        double result;
+        result = weight / (height * height);
+        return  result;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +52,7 @@ public class BMICalculator extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        fid = new javax.swing.JLabel();
+        jlabName = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -92,10 +100,10 @@ public class BMICalculator extends javax.swing.JFrame {
         getContentPane().add(jTextField3);
         jTextField3.setBounds(440, 120, 142, 47);
 
-        fid.setText("jLabel7");
-        getContentPane().add(fid);
-        fid.setBounds(310, 340, 51, 15);
-        fid.getAccessibleContext().setAccessibleName("jId");
+        jlabName.setText("jLabel7");
+        getContentPane().add(jlabName);
+        jlabName.setBounds(310, 340, 51, 15);
+        jlabName.getAccessibleContext().setAccessibleName("jId");
 
         jButton2.setText("Reset");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,6 +149,8 @@ public class BMICalculator extends javax.swing.JFrame {
         // TODO add your handling code here:
         jTextField3.setText("");
         jTextField4.setText("");
+        person.height = 0;
+        person.weight = 0;
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -156,12 +166,25 @@ public class BMICalculator extends javax.swing.JFrame {
         if(jTextField3.getText().equals("") || jTextField4.getText().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Please input all textfield");
         }else{
-            Person person = new Person();
             person.height = Double.parseDouble(jTextField3.getText());
-            jLabel1.setText(String.valueOf(person.height));
             person.weight = Double.parseDouble(jTextField4.getText());
-            jLabel5.setText(String.valueOf(person.weight));
-            jLabel3.setText(String.valueOf(person.result));
+            person.result = calculate(person.weight, person.height);
+            
+            String resultcategory;
+            
+            if(person.result < 18.5) {
+                resultcategory = "Your body are underweight";
+           }else if (person.result < 25) {
+                resultcategory= "Your body are normal";
+           }else if (person.result < 30) {
+                resultcategory= "Your body are overweight";
+           }else {
+                resultcategory= "Your body are obese";
+           }
+            String resultFormat = df.format(person.result);
+            JOptionPane.showMessageDialog(rootPane, "Your name :" + jlabName.getText() + "\n" +
+                                                    "Your Body Mass Index :" + resultFormat + "\n" +
+                                                    resultcategory);
         }
         
     }//GEN-LAST:event_jButton1MouseClicked
@@ -203,7 +226,6 @@ public class BMICalculator extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel fid;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -213,5 +235,10 @@ public class BMICalculator extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel jlabName;
     // End of variables declaration//GEN-END:variables
+
+    private String resultcategory(String your_body_are_underweight) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

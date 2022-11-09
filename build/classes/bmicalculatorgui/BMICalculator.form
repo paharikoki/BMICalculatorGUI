@@ -113,7 +113,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="fid">
+    <Component class="javax.swing.JLabel" name="jlabName">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel7"/>
       </Properties>
