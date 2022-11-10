@@ -119,8 +119,6 @@ public class inputName extends javax.swing.JFrame {
             jTextField1.setText("");
             this.dispose();
         }
-        
-        
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**

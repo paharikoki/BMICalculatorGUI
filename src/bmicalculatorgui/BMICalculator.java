@@ -55,7 +55,6 @@ public class BMICalculator extends javax.swing.JFrame {
         jlabName = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(628, 391));
@@ -84,17 +83,17 @@ public class BMICalculator extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Input your height");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(440, 80, 155, 22);
+        jLabel1.setBounds(440, 80, 139, 22);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Input your weight");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(53, 77, 160, 22);
+        jLabel5.setBounds(53, 77, 142, 22);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("BMI Calculator");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(240, 10, 195, 29);
+        jLabel2.setBounds(240, 10, 169, 32);
 
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(jTextField3);
@@ -102,7 +101,7 @@ public class BMICalculator extends javax.swing.JFrame {
 
         jlabName.setText("jLabel7");
         getContentPane().add(jlabName);
-        jlabName.setBounds(310, 340, 51, 15);
+        jlabName.setBounds(310, 340, 34, 14);
         jlabName.getAccessibleContext().setAccessibleName("jId");
 
         jButton2.setText("Reset");
@@ -127,11 +126,6 @@ public class BMICalculator extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3);
         jButton3.setBounds(430, 250, 128, 35);
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel3.setText("Tampil data");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(270, 270, 140, 40);
 
         pack();
         setLocationRelativeTo(null);
@@ -166,6 +160,7 @@ public class BMICalculator extends javax.swing.JFrame {
         if(jTextField3.getText().equals("") || jTextField4.getText().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Please input all textfield");
         }else{
+            Result resultgui = new Result();
             person.height = Double.parseDouble(jTextField3.getText());
             person.weight = Double.parseDouble(jTextField4.getText());
             person.result = calculate(person.weight, person.height);
@@ -182,9 +177,17 @@ public class BMICalculator extends javax.swing.JFrame {
                 resultcategory= "Your body are obese";
            }
             String resultFormat = df.format(person.result);
-            JOptionPane.showMessageDialog(rootPane, "Your name :" + jlabName.getText() + "\n" +
-                                                    "Your Body Mass Index :" + resultFormat + "\n" +
-                                                    resultcategory);
+            
+            resultgui.getLabelName().setText("Your name :" + jlabName.getText());
+            resultgui.getLabelResult().setText("Your Body Mass Index :" + resultFormat);
+            resultgui.getLabelCategory().setText(resultcategory);
+            resultgui.setVisible(true);
+            
+            jTextField3.setText("");
+            jTextField4.setText("");
+            
+            this.dispose();
+            
         }
         
     }//GEN-LAST:event_jButton1MouseClicked
@@ -231,7 +234,6 @@ public class BMICalculator extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
