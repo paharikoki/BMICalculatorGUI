@@ -83,17 +83,17 @@ public class BMICalculator extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Input your height");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(440, 80, 139, 22);
+        jLabel1.setBounds(440, 80, 220, 22);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Input your weight");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(53, 77, 142, 22);
+        jLabel5.setBounds(53, 77, 250, 22);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("BMI Calculator");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(240, 10, 169, 32);
+        jLabel2.setBounds(240, 10, 195, 29);
 
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(jTextField3);
@@ -101,7 +101,7 @@ public class BMICalculator extends javax.swing.JFrame {
 
         jlabName.setText("jLabel7");
         getContentPane().add(jlabName);
-        jlabName.setBounds(310, 340, 34, 14);
+        jlabName.setBounds(310, 340, 51, 15);
         jlabName.getAccessibleContext().setAccessibleName("jId");
 
         jButton2.setText("Reset");
@@ -177,7 +177,8 @@ public class BMICalculator extends javax.swing.JFrame {
                 resultcategory= "Your body are obese";
            }
             String resultFormat = df.format(person.result);
-            
+            resultgui.getNamePerson().setText(jlabName.getText());
+            resultgui.getNamePerson().setVisible(false);
             resultgui.getLabelName().setText("Your name :" + jlabName.getText());
             resultgui.getLabelResult().setText("Your Body Mass Index :" + resultFormat);
             resultgui.getLabelCategory().setText(resultcategory);

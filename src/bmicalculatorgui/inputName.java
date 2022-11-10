@@ -21,7 +21,6 @@ public class inputName extends javax.swing.JFrame {
     public inputName() {
         initComponents();
     }
-    public String peopleName;
     public JTextField setTextField1(){
         return jTextField1;
     }
@@ -111,9 +110,8 @@ public class inputName extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Please input your name");
         }else{
             BMICalculator bmi = new BMICalculator();
-            bmi.setVisible(true);
-            peopleName = jTextField1.getText();        
-            bmi.getLabelName().setText(peopleName);
+            bmi.setVisible(true);      
+            bmi.getLabelName().setText(jTextField1.getText());
             bmi.getLabelName().setVisible(false);
             jLabel4.setText(jTextField1.getText());
             jTextField1.setText("");
